@@ -1,506 +1,355 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Gian hàng Trung Thu — Full Option</title>
+<title>Trương Phú Thanh — Portfolio</title>
+<meta name="description" content="Trương Phú Thanh — Mechatronic Engineer. Thiết kế CAD, SolidWorks, NX, PLC.">
+<meta property="og:title" content="Trương Phú Thanh — Portfolio">
+<meta property="og:description" content="Mechatronic Engineer, chuyên thiết kế cơ khí & tối ưu sản xuất.">
+<meta property="og:image" content="cover.jpg">
+<link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --bg1:#1e1e2f;
-    --bg2:#3b2d5c;
-    --accent1:#ffd36b;
-    --accent2:#ff8a00;
-    --gold:#f6d27c;
-    --glass: rgba(255,255,255,0.06);
-    --card-shadow: 0 8px 30px rgba(0,0,0,0.6);
-    --ease: cubic-bezier(.25,.9,.2,1);
+    --bg: linear-gradient(135deg,#fbfdff 0%, #eef6ff 100%);
+    --card:#ffffff;
+    --muted:#5b6b7a;
+    --accent:#2b6cb0;
+    --accent-2:#ff7b54;
+    --glass: rgba(255,255,255,0.7);
+    --radius:14px;
+    --container:1180px;
+    --ff:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial;
   }
-  /* ==== RESET ==== */
   *{box-sizing:border-box}
-  html,body{height:100%}
-  body {
-    margin:0; font-family:Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(270deg, var(--bg1), var(--bg2), #5e3370);
-    background-size:600% 600%; animation:bgMove 20s linear infinite;
-    color:#fff; overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--ff);background:var(--bg);color:#122; -webkit-font-smoothing:antialiased}
+  .container{max-width:var(--container);margin:0 auto;padding:28px}
+
+  /* Header */
+  header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px;background:var(--glass);backdrop-filter:blur(6px);border-radius:999px;box-shadow:0 8px 28px rgba(11,20,43,0.06);position:sticky;top:16px;z-index:60}
+  .brand{display:flex;align-items:center;gap:12px}
+  .avatar{width:66px;height:66px;border-radius:12px;overflow:hidden;border:2px solid rgba(11,20,43,0.06)}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .meta{line-height:1}
+  .site-name{font-weight:800;font-size:15px}
+  .nav{display:flex;gap:12px;align-items:center}
+  .nav a{color:var(--accent);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px;transition:all .2s}
+  .nav a:hover{background:rgba(43,108,176,0.06);transform:translateY(-2px)}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1fr 440px;gap:36px;align-items:center;padding:56px 0}
+  .title{font-size:44px;line-height:1.02;margin:0;font-weight:800}
+  .typing{color:var(--accent);white-space:nowrap}
+  .lead{margin-top:12px;color:var(--muted);font-size:18px}
+  .kpis{display:flex;gap:14px;margin-top:20px;flex-wrap:wrap}
+  .kpi{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 10px 30px rgba(11,20,43,0.06);min-width:130px;text-align:center}
+  .kpi .num{font-weight:800;font-size:18px}
+  .ctas{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:800;text-decoration:none;color:white;box-shadow:0 10px 30px rgba(11,20,43,0.08);transition:transform .18s,box-shadow .18s}
+  .btn:hover{transform:translateY(-4px)}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+  .btn-download{background:linear-gradient(90deg,#06b6d4,#3b82f6)}
+  .btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(43,108,176,0.12);color:var(--accent);}
+
+  /* animated gradient border for hero card */
+  .hero-card{position:relative;border-radius:16px;padding:14px;background:var(--card);box-shadow:0 14px 40px rgba(11,20,43,0.06);overflow:hidden}
+  .hero-card:before{content:"";position:absolute;inset:0;padding:2px;border-radius:16px;background:linear-gradient(90deg,#ffffff00,#ffffff00);pointer-events:none}
+  .hero-card img{width:100%;height:250px;object-fit:cover;border-radius:10px;display:block}
+
+  /* Projects */
+  .section{margin-top:48px}
+  .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .project{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(11,20,43,0.04);transform:translateY(0);transition:transform .3s,box-shadow .3s}
+  .project:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(11,20,43,0.08)}
+  .project h4{margin:0 0 8px}
+  .project p{color:var(--muted);margin:0;font-size:14px}
+
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+  .thumb{position:relative;overflow:hidden;border-radius:10px}
+  .thumb img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .5s}
+  .thumb:hover img{transform:scale(1.07)}
+  .thumb .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%, rgba(0,0,0,0.28));opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:12px;color:#fff;font-weight:700}
+  .thumb:hover .overlay{opacity:1}
+
+  /* CV */
+  .cv-wrap{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+  .cv-card{flex:0 0 360px;background:var(--card);padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(11,20,43,0.06)}
+  .embed-cv{flex:1;min-width:280px;border-radius:10px;overflow:hidden;border:1px solid #eef4fb;background:#fff}
+
+  /* Contact */
+  .contact{margin-top:18px;background:linear-gradient(180deg, rgba(235,245,255,0.9), rgba(255,255,255,0.95));padding:16px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;box-shadow:0 10px 30px rgba(11,20,43,0.04);flex-wrap:wrap}
+  .contact .left{display:flex;flex-direction:column;gap:6px}
+  .socials{display:flex;gap:10px;align-items:center}
+
+  /* Lightbox modal */
+  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:999}
+  .modal.active{display:flex}
+  .modal img{max-width:92vw;max-height:88vh;border-radius:10px;box-shadow:0 30px 80px rgba(2,6,23,0.7)}
+
+  footer{text-align:center;color:var(--muted);margin-top:40px;padding-bottom:40px;font-size:14px}
+
+  @media (max-width:1000px){
+    .hero{grid-template-columns:1fr;gap:28px}
+    .projects{grid-template-columns:repeat(2,1fr)}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .cv-wrap{flex-direction:column}
   }
-  @keyframes bgMove {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-  }
-
-  /* ==== LAYOUT SECTIONS ==== */
-  .wrap{min-height:100vh;display:flex;flex-direction:column}
-  header{padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .brand{display:flex;align-items:center;gap:14px}
-  .logo{
-    width:62px;height:62px;border-radius:12px;background:radial-gradient(circle at 30% 30%,var(--gold),#d08a34);
-    display:flex;align-items:center;justify-content:center;font-weight:900;color:#660000;font-size:18px;box-shadow:0 8px 30px rgba(0,0,0,0.45);
-  }
-  .brand h1{font-size:18px;margin:0;color:var(--gold);letter-spacing:0.6px}
-  nav .nav-btn{margin-left:8px;padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#111;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.35)}
-  nav .nav-btn:hover{transform:translateY(-3px)}
-
-  main{flex:1}
-
-  /* ==== HERO ==== */
-  #home {
-    min-height:calc(100vh - 120px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:28px 18px;position:relative;overflow:hidden;
-  }
-  #home h2{margin:0;font-size:40px;color:gold;text-shadow:0 0 24px rgba(255,220,0,0.9);animation:glow 2s ease-in-out infinite alternate;font-weight:800}
-  @keyframes glow {from {text-shadow:0 0 10px gold}to {text-shadow:0 0 30px orange,0 0 60px red}}
-  .hero-sub{margin-top:12px;font-size:16px;color:#ffecc2;max-width:860px}
-  .mooncake {
-    width:200px;height:200px;border-radius:24px;margin:28px auto 6px;
-    background:radial-gradient(circle at 30% 30%,var(--gold),#d08a34);
-    box-shadow:0 30px 80px rgba(208,138,52,0.15),0 0 40px rgba(255,200,0,0.12);
-    display:flex;align-items:center;justify-content:center;
-    font-size:28px;font-weight:900;color:#4b0000;letter-spacing:1px;
-  }
-  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:18px}
-  .btn {
-    padding:12px 22px;border:none;border-radius:12px;font-weight:800;
-    background:linear-gradient(90deg,var(--accent1),var(--accent2));
-    color:#111;cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease);
-    box-shadow:0 10px 30px rgba(0,0,0,0.35);
-  }
-  .btn.secondary{background:transparent;color:var(--gold);border:1px solid rgba(255,255,255,0.08);box-shadow:none}
-  .btn:active{transform:translateY(2px)}
-
-  /* ==== SECTIONS (transition capable) ==== */
-  .section{transition:opacity .45s var(--ease),transform .45s var(--ease);opacity:0;transform:translateY(12px);pointer-events:none}
-  .section.active{opacity:1;transform:none;pointer-events:auto}
-  .hidden{display:none !important} /* fallback when fully hidden */
-
-  /* ==== SHOP GRID ==== */
-  /* ==== SHOP ==== */
-
-#shopSection {
-  min-height: 100vh;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;  /* Đưa nội dung lên trên */
-  align-items: center;
-}
-
-
-  .product-gallery{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;max-width:1200px;margin:0 auto;
-  }
-  .card{
-    background:var(--glass);border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow);cursor:pointer;transition:transform .28s var(--ease),box-shadow .28s var(--ease),opacity .3s;
-    display:flex;flex-direction:column;
-  }
-  .card img{width:100%;height:160px;object-fit:cover;display:block;transition:transform .35s var(--ease)}
-  .card .meta{padding:12px 14px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-  .card h3{margin:0;font-size:16px;color:var(--gold)}
-  .card .desc{font-size:13px;color:#fff9;margin-top:8px;opacity:0.95}
-  .card .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-  .card:hover{transform:translateY(-8px);box-shadow:0 18px 60px rgba(0,0,0,0.6)}
-  .card:hover img{transform:scale(1.06)}
-
-  /* ==== POPUP / MODAL ==== */
-  .overlay {
-    position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.55),rgba(0,0,0,0.7));
-    display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .28s;
-    z-index:120;
-  }
-  .overlay.show{opacity:1;pointer-events:auto}
-  .modal {
-    background:#fff;color:#222;border-radius:14px;padding:18px;max-width:760px;width:94%;box-shadow:0 30px 80px rgba(0,0,0,0.6);
-    transform:translateY(8px);transition:transform .28s;
-  }
-  .overlay.show .modal{transform:none}
-  .modal .hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
-  .close-x{background:none;border:none;font-size:20px;cursor:pointer;color:#666}
-  .modal img{width:100%;max-height:360px;object-fit:cover;border-radius:8px;margin:10px 0}
-
-  /* ==== CART PANEL ==== */
-  .cart-panel {max-width:560px}
-  .cart-item{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #eee}
-  .cart-item img{width:70px;height:55px;object-fit:cover;border-radius:6px}
-  .cart-summary{text-align:right;margin-top:12px;font-weight:900}
-  .cart-btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px 14px;border-radius:10px;font-weight:800;color:#111;cursor:pointer}
-
-  /* ==== WISH BOX ==== */
-  .wish-box{max-width:520px;text-align:center}
-  .wish-emoji{font-size:36px;margin-bottom:8px}
-  .wish-text{font-size:16px;color:#333;margin-top:6px}
-
-  /* ==== CONTACT + FOOTER ==== */
-  footer{padding:18px 22px;text-align:center;color:#ddd;background:linear-gradient(180deg,transparent rgba(0,0,0,0.06));font-size:14px}
-  .contact-list{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:8px}
-  .contact-pill{background:rgba(255,255,255,0.06);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);font-weight:700;color:#fff}
-
-  /* ==== FLOATING LANTERNS (simple) ==== */
-  .lanterns{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
-  .lantern{position:absolute;width:28px;height:40px;border-radius:6px;background:linear-gradient(180deg,#ffdf9a,#f5b34a);box-shadow:0 6px 20px rgba(0,0,0,0.25);opacity:0.9;transform-origin:center;animation:lanternFloat linear infinite}
-  @keyframes lanternFloat {
-    0%{transform:translateY(110vh) rotate(0) scale(0.8);opacity:0}
-    10%{opacity:1}
-    100%{transform:translateY(-40vh) rotate(360deg) scale(1);opacity:0}
+  @media (max-width:600px){
+    .projects{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr}
+    .nav{display:none}
   }
 
-  /* ==== BACK TO TOP ==== */
-  #backTop{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border:none;color:#111;padding:10px 12px;border-radius:12px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.35);display:none;z-index:140}
+  /* Reveal animations */
+  .reveal{opacity:0;transform:translateY(18px);transition:all 700ms cubic-bezier(.2,.9,.2,1)}
+  .reveal.in{opacity:1;transform:none}
 
-  /* ==== RESPONSIVE ==== */
-  @media (max-width:720px){
-    #home h2{font-size:28px}
-    .mooncake{width:140px;height:140px;font-size:20px}
-    .card img{height:140px}
-  }
+  /* typing caret */
+  .caret{display:inline-block;width:2px;height:1.1em;background:var(--accent);margin-left:6px;animation:blink 1s steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
 </style>
 </head>
 <body>
-<div class="wrap">
-
-  <!-- HEADER -->
-  <header>
-    <div class="brand">
-      <div class="logo">TT</div>
-      <div>
-        <h1>Gian hàng Trung Thu</h1>
-        <div style="font-size:12px;opacity:0.9;color:#ffecc2">Sản phẩm tươi ngon • Giao nhanh • Hỗ trợ Zalo</div>
-      </div>
-    </div>
-    <nav>
-      <button class="nav-btn" id="navShopBtn" onclick="openShop()">🌙 Ghé thăm gian hàng</button>
-      <button class="nav-btn" onclick="openWish()">📩 Lời chúc</>
-      <button class="nav-btn" onclick="openCart()">🛒 Giỏ hàng <span id="cartCount" class="cart-count" style="margin-left:8px;background:#ff5b5b;color:#fff;padding:2px 8px;border-radius:16px;font-weight:800">0</span></button>
-    </nav>
-  </header>
-
-  <main>
-    <!-- LANTERNS -->
-    <div class="lanterns" id="lanterns"></div>
-
-    <!-- HOME -->
-    <section id="home" class="section active">
-      <h2>✨ Chúc mừng Trung Thu ✨</h2>
-      <div class="mooncake">Trương Thanh</div>
-      <div class="hero-sub">Chào mừng đến với gian hàng trung thu — Bánh tươi, nhân thơm, giao nhanh. Chạm nút "Ghé thăm gian hàng" để xem sản phẩm và đặt hàng ngay.</div>
-      <div class="hero-actions">
-        <button class="btn" onclick="openShop()">🌙 Ghé thăm gian hàng</button>
-        <button class="btn secondary" onclick="openWish()">📩 Nhận lời chúc</button>
-        <button class="btn secondary" onclick="scrollToContact()">📞 Liên hệ</button>
+  <div class="container">
+    <!-- header -->
+    <header>
+      <div class="brand">
+        <div class="avatar"><img src="anhdaidien.jpg" alt="Ảnh đại diện"></div>
+        <div class="meta">
+          <div class="site-name">Trương Phú Thanh</div>
+          <div style="font-size:13px;color:var(--muted)">Mechatronic Engineer — CAD & Automation</div>
+        </div>
       </div>
 
-      <!-- feature strip -->
-      <div style="display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap;z-index:2;position:relative">
-        <div style="background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">🚚 Giao nhanh</div>
-        <div style="background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">🥮 Nhân tươi</div>
-        <div style="background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">💳 Thanh toán linh hoạt</div>
-      </div>
-    </section>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#work">Dự án</a>
+        <a href="#gallery">Ảnh</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+    </header>
 
-    <!-- SHOP -->
-    <section id="shopSection" class="section hidden" aria-hidden="true">
-      <h2 class="shop-title">🌙 Gian hàng Trung Thu 🌙</h2>
-      <div id="productGallery" class="product-gallery" aria-live="polite"></div>
+    <!-- hero -->
+    <main>
+      <section id="home" class="hero">
+        <div>
+          <h1 class="title">Xin chào — Tôi là <span style="color:var(--accent)">Thanh</span></h1>
+          <div style="margin-top:10px;font-weight:700;font-size:20px">Trương Thanh <span id="typing" class="typing"></span><span class="caret" aria-hidden="true"></span></div>
+          <p class="lead">Kỹ sư Cơ điện tử — Thiết kế CAD (SolidWorks, NX), tối ưu quy trình sản xuất & hệ thống điều khiển.</p>
 
-      <div style="text-align:center;margin-top:28px">
-        <button class="btn" onclick="backToHome()">⬅ Quay lại</button>
-      </div>
-    </section>
+          <div class="kpis">
+            <div class="kpi"><div class="num">0852 040 103</div><div style="color:var(--muted)">Hotline</div></div>
+            <div class="kpi"><div class="num">88+</div><div style="color:var(--muted)">Dự án & sản phẩm</div></div>
+            <div class="kpi"><div class="num">Hanoi</div><div style="color:var(--muted)">Địa điểm</div></div>
+          </div>
 
-  </main>
+          <div class="ctas">
+            <a class="btn btn-primary" href="#contact">Nhận tư vấn</a>
+            <a id="share-fb" class="btn btn-ghost" href="#" title="Chia sẻ lên Facebook">Chia sẻ</a>
+            <a id="cv-top" class="btn btn-download" href="#" title="Tải CV">Tải CV</a>
+          </div>
 
-  <!-- FOOTER / CONTACT -->
-  <footer id="contact">
-    <div>Website Trung Thu • <span style="font-weight:900">Liên hệ: <span id="contactPhone">0852 040 103</span></span></div>
-    <div class="contact-list">
-      <a class="contact-pill" href="tel:0852040103">📞 0852 040 103</a>
-      <a class="contact-pill" href="https://zalo.me/0852040103" target="_blank" rel="noopener">💬 Zalo (Chat)</a>
-      <a class="contact-pill" href="https://facebook.com/" target="_blank" rel="noopener">🔗 Facebook</a>
-    </div>
-  </footer>
-</div>
+          <p class="lead" style="margin-top:18px;color:var(--muted)">Chuyên: thiết kế lò đúc công nghiệp, tối ưu năng suất, bản vẽ sản xuất theo tiêu chuẩn công nghiệp.</p>
+        </div>
 
-<!-- POPUP PRODUCT -->
-<div id="productOverlay" class="overlay" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true">
-    <div class="hd">
-      <strong id="modalName" style="font-size:18px;color:#d35400"></strong>
-      <button class="close-x" onclick="closeProductPopup()">✕</button>
-    </div>
-    <img id="modalImg" src="" alt="">
-    <p id="modalDesc"></p>
-    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:8px">
-      <div><b id="modalPrice"></b> VND</div>
-      <div>
-        <label>Số lượng:</label>
-        <input id="modalQty" type="number" min="1" value="1" style="width:80px;padding:6px;border-radius:8px;border:1px solid #eee">
-        <button class="btn" onclick="addToCart()">Thêm vào giỏ</button>
-      </div>
-    </div>
-    <p style="margin-top:10px">Liên hệ: <span id="contactPhoneModal"></span></p>
+        <aside class="hero-card reveal">
+          <img src="cover.jpg" alt="Cover">
+          <div style="margin-top:12px">
+            <h3 style="margin:0">Kỹ năng & dịch vụ</h3>
+            <div class="skills">SolidWorks • NX • PLC • Thiết kế lò đúc • Tối ưu quy trình</div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- projects -->
+      <section id="work" class="section">
+        <h2>Dự án tiêu biểu</h2>
+        <div class="projects">
+          <article class="project reveal">
+            <h4>1) LÒ ĐÚC TDH VN</h4>
+            <p>Thiết kế lò đúc sản xuất nhôm, tối ưu nhiên liệu, nâng cao an toàn vận hành.</p>
+          </article>
+
+          <article class="project reveal">
+            <h4>2) Hệ thống PLC điều khiển</h4>
+            <p>Triển khai PLC cho tự động hóa dây chuyền — giảm lỗi, tăng năng suất.</p>
+          </article>
+
+          <article class="project reveal">
+            <h4>3) Chuẩn hoá bản vẽ sản xuất</h4>
+            <p>Soạn thảo 2D/3D, hướng dẫn chế tạo và kiểm tra chất lượng.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- gallery -->
+      <section id="gallery" class="section">
+        <h2>Ảnh nổi bật</h2>
+        <div class="gallery">
+          <!-- Thay bằng ảnh thực của anh -->
+          <div class="thumb reveal"><img src="hethongkhi.lnk" alt="Ảnh 1"><div class="overlay">Hệ thống xử lý khí thải</div></div>
+          <div class="thumb reveal"><img src="hethongto.lnk" alt="Ảnh 2"><div class="overlay">Hệ thống xưởng tái chế nhôm </div></div>
+          <div class="thumb reveal"><img src="lot4.jpg" alt="Ảnh 3"><div class="overlay">Lò Nhiệt Luyện T4</div></div>
+          <div class="thumb reveal"><img src="lo3.jpg" alt="Ảnh 4"><div class="overlay">Lò bàn xoay khí gas </div></div>
+          <div class="thumb reveal"><img src="robot.lnk" alt="Ảnh 5"><div class="overlay">Cánh tay robot</div></div>
+          <div class="thumb reveal"><img src="tudien.lnk" alt="Ảnh 6"><div class="overlay">Tủ điện công nghiệp</div></div>
+        </div>
+      </section>
+
+      <!-- CV -->
+      <section id="cv" class="section">
+        <h2>Curriculum Vitae</h2>
+        <div class="cv-wrap">
+          <div class="cv-card reveal">
+            <strong>Trương Phú Thanh</strong>
+            <div style="color:var(--muted);margin-top:6px">Mechatronic Engineer — CAD & Automation</div>
+            <div class="cv-actions" style="margin-top:12px">
+              <!-- Drive links: preview & download (FILE_ID từ link anh cung cấp) -->
+              <a id="cv-download" class="btn btn-primary" href="https://drive.google.com/uc?export=download&id=1s1XLcWM0OFzPRaXP4eGaxrfsam7pGQxo" target="_blank">Download CV (PDF)</a>
+              <a id="cv-open" class="btn btn-ghost" href="https://drive.google.com/file/d/1s1XLcWM0OFzPRaXP4eGaxrfsam7pGQxo/view" target="_blank">Mở trên Drive</a>
+            </div>
+            <p style="margin-top:12px;color:var(--muted)">📞 <strong>0852 040 103</strong> · ✉️ <strong>truongthanh040103@gmail.com</strong></p>
+          </div>
+
+          <div class="embed-cv reveal">
+            <iframe src="https://drive.google.com/file/d/1s1XLcWM0OFzPRaXP4eGaxrfsam7pGQxo/preview" style="width:100%;height:520px;border:0"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- contact -->
+      <section id="contact" class="section">
+        <h2>Liên hệ</h2>
+        <div class="contact reveal">
+          <div class="left">
+            <div style="font-weight:800">Thanh</div>
+            <div class="info" style="color:var(--muted)">📞 <a href="tel:+84852040103">0852 040 103</a> · ✉️ <a href="mailto:truongthanh040103@gmail.com">truongthanh040103@gmail.com</a></div>
+            <div style="margin-top:8px;color:var(--muted)">Facebook: <a href="https://web.facebook.com/thanh.oppa.399" target="_blank">thanh.oppa.399</a></div>
+          </div>
+
+          <div class="socials">
+            <a class="btn btn-ghost" href="https://web.facebook.com/thanh.oppa.399" target="_blank">Facebook</a>
+            <a class="btn btn-ghost" href="https://zalo.me/84852040103" target="_blank" style="background:#25d366;color:white">Zalo</a>
+          </div>
+        </div>
+
+        <!-- simple form -> mailto -->
+        <form id="contact-form" style="margin-top:14px;display:grid;gap:10px;max-width:760px" class="reveal">
+          <input type="text" id="c-name" placeholder="Họ tên" required style="padding:10px;border-radius:8px;border:1px solid #e8eef8">
+          <input type="text" id="c-contact" placeholder="Số điện thoại hoặc email" required style="padding:10px;border-radius:8px;border:1px solid #e8eef8">
+          <textarea id="c-message" placeholder="Nội dung" required style="padding:10px;border-radius:8px;border:1px solid #e8eef8;min-height:110px"></textarea>
+          <input type="text" id="hp" style="display:none" aria-hidden="true" autocomplete="off">
+          <div>
+            <button class="btn btn-primary" type="submit">Gửi yêu cầu</button>
+            <button class="btn btn-ghost" type="button" id="btn-call" style="margin-left:8px">Gọi ngay</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>© <span id="year"></span> — Trương Phú Thanh • Mechatronic Engineer • Hanoi</footer>
   </div>
-</div>
 
-<!-- WISH -->
-<div id="wishOverlay" class="overlay" aria-hidden="true">
-  <div class="modal wish-box" role="dialog" aria-modal="true">
-    <div style="display:flex;justify-content:flex-end"><button class="close-x" onclick="closeWish()">✕</button></div>
-    <div style="text-align:center">
-      <div class="wish-emoji">🌕🥮🌙</div>
-      <h3 style="margin:0;color:#d35400">Lời chúc Trung Thu</h3>
-      <p class="wish-text">Dạ thưa anh, chúc anh và gia đình một mùa Trung Thu an yên, đầy ắp tiếng cười và bánh ngon bên người thân. 🌟</p>
-      <div style="margin-top:10px">
-        <button class="btn" onclick="closeWish()">Cảm ơn</button>
-      </div>
-    </div>
+  <!-- lightbox -->
+  <div id="lightbox" class="modal" aria-hidden="true">
+    <img id="lightbox-img" src="" alt="Xem lớn">
   </div>
-</div>
-
-<!-- CART -->
-<div id="cartOverlay" class="overlay" aria-hidden="true">
-  <div class="modal cart-panel" role="dialog" aria-modal="true">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <h3>🛒 Giỏ hàng của bạn</h3>
-      <button class="close-x" onclick="closeCart()">✕</button>
-    </div>
-    <div id="cartItemsArea" style="margin-top:12px"></div>
-    <div class="cart-summary" id="cartSummary" style="margin-top:12px">Tổng: 0 VND</div>
-    <div style="text-align:right;margin-top:12px">
-      <button class="cart-btn" onclick="checkout()">Thanh toán</button>
-    </div>
-  </div>
-</div>
-
-<!-- BACK TO TOP -->
-<button id="backTop" title="Lên đầu trang" onclick="scrollToTop()">↑</button>
 
 <script>
-/* ====== CONFIG ====== */
-let CONTACT_PHONE = "0852 040 103";
-const PRODUCTS = [
-  {id:"p1",name:"Bánh Trung Thu Thập Cẩm",price:120000,img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mdl35k110ddx95.webp",desc:"Hương vị truyền thống, thơm ngon."},
-  {id:"p2",name:"Bánh Trung Thu Đậu Xanh",price:100000,img:"https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/cach_lam_banh_trung_thu_nhan_dau_xanh_6bae6d064c.jpg",desc:"Ngọt dịu, thanh mát."},
-  {id:"p3",name:"Bánh Trung Thu Trà Xanh",price:150000,img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mda36bv3qu8s3a.webp",desc:"Vị hiện đại, đậm đà trà."},
-  {id:"p4",name:"Bánh Trung Thu Lava Trứng Muối",price:180000,img:"https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mdl35k4mv3d182.webp",desc:"Nhân trứng chảy, béo ngậy."}
-];
-let cart = {}; // {id:qty}
+/* ---------- Typing effect ---------- */
+const phrases = ['Kỹ sư Cơ điện tử','Chuyên gia CAD & SolidWorks','Tối ưu quy trình sản xuất','Thiết kế hệ thống tự động'];
+let pi=0, ti=0;
+const typingEl = document.getElementById('typing');
+function typeLoop(){
+  const p = phrases[pi];
+  typingEl.textContent = p.slice(0, ++ti);
+  if(ti === p.length){
+    setTimeout(()=>{ // pause then delete
+      const del = setInterval(()=>{
+        typingEl.textContent = p.slice(0, --ti);
+        if(ti===0){ clearInterval(del); pi=(pi+1)%phrases.length; setTimeout(typeLoop,250); }
+      },40);
+    },900);
+  } else setTimeout(typeLoop,80);
+}
+if(typingEl) typeLoop();
 
-/* ===== INITIALIZE ===== */
-document.addEventListener("DOMContentLoaded",()=>{
-  document.getElementById("contactPhone").textContent = CONTACT_PHONE;
-  document.getElementById("contactPhoneModal").textContent = CONTACT_PHONE;
-  renderProducts();
-  spawnLanterns(8);
-  window.addEventListener('scroll', onScrollHandler);
+/* ---------- Share FB ---------- */
+document.getElementById('share-fb').addEventListener('click', e=>{
+  e.preventDefault();
+  const url = encodeURIComponent(window.location.href);
+  window.open('https://www.facebook.com/sharer/sharer.php?u='+url,'_blank','noopener');
 });
 
-/* ===== RENDER PRODUCTS ===== */
-function renderProducts(){
-  const g = document.getElementById("productGallery");
-  g.innerHTML = "";
-  PRODUCTS.forEach((p, idx) => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.setAttribute('tabindex','0');
-    card.style.animation = `cardPop .35s ${idx*70}ms ${'ease'}`;
-    card.innerHTML = `
-      <img src="${p.img}" alt="${escapeHtml(p.name)}">
-      <div class="meta">
-        <div>
-          <h3>${p.name}</h3>
-          <div class="desc">${p.desc}</div>
-        </div>
-        <div class="price-row">
-          <div style="font-weight:900">${p.price.toLocaleString()} VND</div>
-          <div><button class="btn" onclick="openProduct('${p.id}'); event.stopPropagation()">Xem</button></div>
-        </div>
-      </div>
-    `;
-    card.onclick = () => openProduct(p.id);
-    g.appendChild(card);
+/* ---------- CV top button links to Drive download (already set in href in HTML) ---------- */
+const cvTop = document.getElementById('cv-top');
+if(cvTop){
+  cvTop.setAttribute('href','https://drive.google.com/uc?export=download&id=1s1XLcWM0OFzPRaXP4eGaxrfsam7pGQxo');
+  cvTop.setAttribute('target','_blank');
+}
+
+/* ---------- Lightbox for gallery ---------- */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.thumb img').forEach(img=>{
+  img.addEventListener('click', ()=> {
+    lightboxImg.src = img.src;
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden','false');
   });
-}
-
-/* small card pop keyframe (added programmatically) */
-const styleSheet = document.createElement("style");
-styleSheet.innerText = `
-@keyframes cardPop {
-  from {opacity:0; transform:translateY(12px) scale(.99)}
-  to {opacity:1; transform:none}
-}`;
-document.head.appendChild(styleSheet);
-
-/* ===== SECTION NAVIGATION (smooth) ===== */
-function openShop(){
-  const home = document.getElementById('home');
-  const shop = document.getElementById('shopSection');
-  // hide home
-  home.classList.remove('active');
-  // show shop (remove hidden then activate to allow transition)
-  shop.classList.remove('hidden');
-  shop.setAttribute('aria-hidden','false');
-  requestAnimationFrame(()=> {
-    shop.classList.add('active');
-  });
-  // update nav focus
-  document.getElementById('navShopBtn').blur();
-}
-function backToHome(){
-  const home = document.getElementById('home');
-  const shop = document.getElementById('shopSection');
-  // hide shop first (transition)
-  shop.classList.remove('active');
-  shop.setAttribute('aria-hidden','true');
-  // after transition, hide display completely
-  setTimeout(()=> {
-    shop.classList.add('hidden');
-    // show home
-    home.classList.add('active');
-  }, 450);
-}
-
-/* ===== POPUP PRODUCT ===== */
-function openProduct(id){
-  const p = PRODUCTS.find(x => x.id === id);
-  if(!p) return;
-  document.getElementById('modalImg').src = p.img;
-  document.getElementById('modalName').textContent = p.name;
-  document.getElementById('modalDesc').textContent = p.desc;
-  document.getElementById('modalPrice').textContent = p.price.toLocaleString();
-  document.getElementById('modalQty').value = 1;
-  window._current = p;
-  const overlay = document.getElementById('productOverlay');
-  overlay.classList.add('show');
-  overlay.setAttribute('aria-hidden','false');
-}
-function closeProductPopup(){
-  const overlay = document.getElementById('productOverlay');
-  overlay.classList.remove('show');
-  overlay.setAttribute('aria-hidden','true');
-}
-
-/* ===== CART ===== */
-function addToCart(){
-  const p = window._current;
-  if(!p) return;
-  const q = Math.max(1, parseInt(document.getElementById('modalQty').value || 1));
-  cart[p.id] = (cart[p.id]||0) + q;
-  updateCartUI();
-  closeProductPopup();
-  // small toast (alert replaced)
-  showToast(`Đã thêm ${q} x ${p.name} vào giỏ hàng.`);
-}
-function updateCartUI(){
-  const count = Object.values(cart).reduce((a,b)=>a+b,0);
-  document.getElementById('cartCount').textContent = count;
-  document.getElementById('cartCount').setAttribute('aria-label', count + ' sản phẩm trong giỏ');
-}
-function openCart(){
-  renderCart();
-  const overlay = document.getElementById('cartOverlay');
-  overlay.classList.add('show');
-  overlay.setAttribute('aria-hidden','false');
-}
-function closeCart(){
-  const overlay = document.getElementById('cartOverlay');
-  overlay.classList.remove('show');
-  overlay.setAttribute('aria-hidden','true');
-}
-function renderCart(){
-  const area = document.getElementById('cartItemsArea');
-  area.innerHTML = "";
-  let total = 0;
-  if(Object.keys(cart).length === 0){
-    area.innerHTML = "<p style='color:#666'>Giỏ hàng trống</p>";
-  } else {
-    for(const id in cart){
-      const p = PRODUCTS.find(x => x.id === id);
-      const q = cart[id];
-      const row = document.createElement('div');
-      row.className = 'cart-item';
-      row.innerHTML = `<img src="${p.img}" alt="${escapeHtml(p.name)}"><div style="flex:1"><b>${p.name}</b><br>${p.price.toLocaleString()} VND x ${q}</div><div style="text-align:right">${(p.price*q).toLocaleString()} VND<br><button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:none;background:#ff6b6b;color:white;cursor:pointer" onclick="removeFromCart('${id}')">Xóa</button></div>`;
-      area.appendChild(row);
-      total += p.price*q;
-    }
-  }
-  document.getElementById('cartSummary').textContent = "Tổng: " + total.toLocaleString() + " VND";
-}
-function removeFromCart(id){
-  delete cart[id];
-  updateCartUI();
-  renderCart();
-}
-function checkout(){
-  if(Object.keys(cart).length === 0){ showToast("Giỏ hàng đang trống."); return; }
-  // Simulate order creation
-  const phone = CONTACT_PHONE;
-  alert("Đơn hàng đã được tạo.\nNhân viên sẽ gọi lại để xác nhận.\nLiên hệ: " + phone);
-  cart = {};
-  updateCartUI();
-  closeCart();
-}
-
-/* ===== WISH POPUP ===== */
-function openWish(){ const o = document.getElementById('wishOverlay'); o.classList.add('show'); o.setAttribute('aria-hidden','false'); }
-function closeWish(){ const o = document.getElementById('wishOverlay'); o.classList.remove('show'); o.setAttribute('aria-hidden','true'); }
-
-/* ===== LANTERNS SPAWN ===== */
-function spawnLanterns(n){
-  const cont = document.getElementById('lanterns');
-  cont.innerHTML = '';
-  for(let i=0;i<n;i++){
-    const el = document.createElement('div');
-    el.className = 'lantern';
-    const left = Math.random()*100;
-    const delay = Math.random()*3;
-    const dur = 12 + Math.random()*12;
-    const size = 18 + Math.random()*36;
-    el.style.left = left + 'vw';
-    el.style.width = size + 'px';
-    el.style.height = (size*1.2) + 'px';
-    el.style.animationDuration = dur + 's';
-    el.style.animationDelay = delay + 's';
-    el.style.opacity = 0.9 - Math.random()*0.4;
-    cont.appendChild(el);
-  }
-}
-
-/* ===== BACK TO TOP + SCROLL ===== */
-function onScrollHandler(){
-  const btn = document.getElementById('backTop');
-  if(window.scrollY > 240) btn.style.display = 'block'; else btn.style.display = 'none';
-}
-function scrollToTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
-function scrollToContact(){ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); }
-
-/* ===== TOAST ===== */
-let toastTimer = null;
-function showToast(msg){
-  // simple temporary toast
-  let t = document.getElementById('simpleToast');
-  if(!t){
-    t = document.createElement('div'); t.id='simpleToast';
-    t.style.position='fixed'; t.style.left='50%'; t.style.bottom='28px'; t.style.transform='translateX(-50%)';
-    t.style.background='rgba(0,0,0,0.8)'; t.style.color='white'; t.style.padding='10px 18px'; t.style.borderRadius='12px'; t.style.zIndex=9999;
-    document.body.appendChild(t);
-  }
-  t.textContent = msg;
-  t.style.opacity = '1';
-  if(toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>{ t.style.opacity='0'; }, 2500);
-}
-
-/* ===== UTILITIES ===== */
-function escapeHtml(text){ return text.replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; }); }
-
-/* ===== KEYBOARD SHORTCUTS: ESC to close overlays ===== */
-document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape'){
-    document.querySelectorAll('.overlay.show').forEach(o => o.classList.remove('show'));
-  }
 });
+lightbox.addEventListener('click', ()=> {
+  lightbox.classList.remove('active');
+  lightbox.setAttribute('aria-hidden','true');
+});
+document.addEventListener('keydown', e=> { if(e.key==='Escape'){ lightbox.classList.remove('active'); lightbox.setAttribute('aria-hidden','true'); }});
+
+/* ---------- Contact form -> mailto ---------- */
+document.getElementById('contact-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const hp = document.getElementById('hp').value.trim();
+  if(hp){ alert('Spam detected'); return; }
+  const name = document.getElementById('c-name').value.trim();
+  const contact = document.getElementById('c-contact').value.trim();
+  const message = document.getElementById('c-message').value.trim();
+  const subject = encodeURIComponent('Yêu cầu tư vấn từ website');
+  const body = encodeURIComponent(`Tên: ${name}\nLiên hệ: ${contact}\n\nNội dung:\n${message}`);
+  window.location.href = `mailto:truongthanh040103@gmail.com?subject=${subject}&body=${body}`;
+});
+
+/* ---------- Call button ---------- */
+document.getElementById('btn-call').addEventListener('click', ()=> window.location.href='tel:+84852040103');
+
+/* ---------- Reveal on scroll ---------- */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting) en.target.classList.add('in');
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* ---------- Set year ---------- */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- JSON-LD structured data (add URL after deploy) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Trương Phú Thanh",
+  "jobTitle":"Mechatronic Engineer",
+  "url":"",
+  "sameAs":["https://web.facebook.com/thanh.oppa.399"],
+  "telephone":"+84852040103",
+  "email":"truongthanh040103@gmail.com"
+}
 </script>
 </body>
 </html>
